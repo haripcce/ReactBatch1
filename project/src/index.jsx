@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppContainer from 'components/AppContainer';
+import AppContainer from 'containers/AppContainer';
 
 ReactDOM.render(
   <AppContainer helloMessage="Hello World 123" />,

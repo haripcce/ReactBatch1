@@ -78,6 +78,8 @@ const plugins = isProduction ?
 //           }
 //       }));
 
+const proxyURL = 'http://dev1.reactjs.com';
+
 const config = {
     entry: {
         main: [src]
@@ -98,11 +100,15 @@ const config = {
     devtool: isProduction ? '' : 'source-map',
 
     devServer: {
-
+        host: 'dev.reactjs.com',
+        port: 80,
+        proxy: {
+            '**': proxyURL
+        },
         inline: true,
         contentBase: 'dist',
-        compress: true,
-        proxy: {
+        compress: true
+  /*      proxy: {
             '/api/**': {
                 target: 'https://staging-cloud.centricsoftware.com/field-testing-service',
                 changeOrigin: true,
@@ -111,6 +117,7 @@ const config = {
                 }
             }
         }
+    */
     },
 
     module: {
