@@ -1,0 +1,30 @@
+.logoStyle{
+
+    display:block;
+}
+.companyLogoStyle{
+    margin: 2%;
+}
+.flex{
+    display: flex;
+}
+.rightContent{
+    float: right;
+    width: 50%;
+    height: auto;
+    margin-left: 5%;
+    margin-top: 7%;
+}
+.loginScreen{
+    margin: auto;
+    height: 100%;
+    width: 35%;
+    margin-top: 9%;
+}
+.welcomeStyle{
+    float: right;
+}
+.imageSize{.
+    height: 80%;
+    width: 61%;
+}
