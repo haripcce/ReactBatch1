@@ -1,5 +1,5 @@
 /**
- * Created by vivekp on 07-05-2017.
+ * Created by synerzip on 07-05-2017.
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
