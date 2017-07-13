@@ -23,30 +23,33 @@ const styles = {
     }
 };
 
-const EmployeeDetailComponent = props => (
+const ProjectDetailComponent = props => (
   <div style={styles.propContainer}>
     <Table>
       <TableHeader>
         <TableRow>
           <TableHeaderColumn>Name</TableHeaderColumn>
-          <TableHeaderColumn>Address</TableHeaderColumn>
-          <TableHeaderColumn>Salary</TableHeaderColumn>
+          <TableHeaderColumn>TeamSize</TableHeaderColumn>
+          <TableHeaderColumn>StartDate</TableHeaderColumn>
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow key={props.employee.id}>
-          <TableRowColumn>{props.employee.name}</TableRowColumn>
-          <TableRowColumn>{props.employee.address}</TableRowColumn>
-          <TableRowColumn>{props.employee.salary}</TableRowColumn>
+        <TableRow key={props.project.id}>
+          <TableRowColumn>{props.project.projectName}</TableRowColumn>
+          <TableRowColumn>{props.project.teamSize}</TableRowColumn>
+          <TableRowColumn>{props.project.projectStartDate}</TableRowColumn>
 
         </TableRow>
+
       </TableBody>
+
     </Table>
+
   </div>
     );
-EmployeeDetailComponent.propTypes = {
-    employee: PropTypes.arrayOf(PropTypes.string)
+ProjectDetailComponent.propTypes = {
+    project: PropTypes.arrayOf(PropTypes.string)
 };
 
-export default EmployeeDetailComponent;
+export default ProjectDetailComponent;
 

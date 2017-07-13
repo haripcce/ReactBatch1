@@ -3,11 +3,35 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
-
+//var htaccessParser = require('htaccess-parser');
 require('dotenv').load({path: require('path').join(__dirname, '.env')});
+//var proxy = require('http-proxy-middleware');
+
+//var apiProxy = proxy('**', {target: 'action-js.dev',protocolRewrite:'https'});
+//const redirectHTTPMiddleware = require("aws-elb-redirect-http-middleware");
+//const environment = process.ENV.SERVER_ENV || "development";
+
+//if (environment === "production") server.use(redirectHTTPMiddleware);
 
 const isProduction = process.env.ENV === 'production';
 const src = path.join(__dirname, 'src');
+
+/*htaccessParser({
+  file: path.resolve(__dirname, '.htaccess')
+},
+function(err, parsedFile) {
+  console.log(parsedFile);
+});
+*/
+/*
+var express = require('express');
+var proxy = require('http-proxy-middleware');
+
+var app = express();
+
+app.use('/src', proxy({target: 'https://dev2.reactjs.com:8030/', changeOrigin: true}));
+app.listen(3000);
+*/
 const plugins = isProduction ?
 [
     new webpack.optimize.OccurenceOrderPlugin(true),
@@ -78,7 +102,7 @@ const plugins = isProduction ?
 //           }
 //       }));
 
-const proxyURL = 'http://dev1.reactjs.com';
+//const proxyURL = 'http://dev1.reactjs.com';
 
 const config = {
     entry: {
@@ -100,24 +124,27 @@ const config = {
     devtool: isProduction ? '' : 'source-map',
 
     devServer: {
-        host: 'dev.reactjs.com',
-        port: 80,
-        proxy: {
+       // host: 'dev.reactjs.com',
+        //port: 80,
+       /* proxy: {
             '**': proxyURL
         },
+		*/
         inline: true,
         contentBase: 'dist',
         compress: true
-  /*      proxy: {
-            '/api/**': {
-                target: 'https://staging-cloud.centricsoftware.com/field-testing-service',
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/api': ''
-                }
-            }
-        }
-    */
+
+     // proxy: {
+       //     '**': {
+		//		protocolRewrite:true,
+          //      target: 'http://dev2.reactjs.com:8030/',
+            //    changeOrigin: true,
+               /* pathRewrite: {
+                    '^/src': ''
+                }*/
+           // }
+    //   }
+
     },
 
     module: {
@@ -179,3 +206,4 @@ if (isProduction)
 if (argv.watch) config.plugins.push(new DashboardPlugin());
 
 module.exports = config;
+

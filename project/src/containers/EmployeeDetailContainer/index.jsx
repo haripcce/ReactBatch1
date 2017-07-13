@@ -7,13 +7,12 @@ import EmployeeDetailComponent from 'components/EmployeeDetail';
 
 const EmployeeDetailContainer = props => (<div>
   <EmployeeDetailComponent
-    screenName={props.screenName}
-    data={props.data}
+    employee={props.employee}
   />
 </div>);
+
 EmployeeDetailContainer.propTypes = {
-    screenName: PropTypes.string,
-    data: PropTypes.arrayOf(PropTypes.string)
+    employee: PropTypes.arrayOf(PropTypes.string)
 
 };
 

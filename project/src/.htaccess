@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^dev.reactjs.com$
+  RewriteRule (.*)$ https://dev2.reactjs.com:8030/$1 [R=301,L]
+</IfModule>
