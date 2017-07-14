@@ -34,6 +34,5 @@ const HeaderComponent = props => {
 HeaderComponent.propTypes = {
     changeScreenName: PropTypes.func
 };
-
 export default HeaderComponent;
 
