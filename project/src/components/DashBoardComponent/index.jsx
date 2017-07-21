@@ -4,50 +4,57 @@ import EmployeeDetailsComponent from 'components/EmployeeDetailsComponent';
 import ProjectAndTeamSizeComponent from 'components/ProjectAndTeamSizeComponent';
 import Paper from 'material-ui/Paper';
 import propTypes from 'prop-types';
+import projectData from 'JsonFiles/projectData';
+import employeeData from 'JsonFiles/employeeData';
 
-const style = {
-    divSize: {
-        width: '50%',
-        marginTop: '5%',
-        marginRight: '2%',
-        height: '80%'
-    },
-    flex: {
-        display: 'flex'
-    },
-    style: {
-        height: '400px'
-    }
-
-};
 const DashBoardComponent = props => (
-  <div style={style.flex}>
-    <div style={style.divSize}>
-      <Paper style={style} zDepth={4}>
-        <ProjectAndTeamSizeComponent
-          empDetails={props.empDetails}
-          projectData={props.projectData}
-          stepperName={props.stepperName}
-        />
-      </Paper>
+    <div>
+        <div className="row summary-block">
+            <div className="col-lg-3 ">
+                <Paper className="summary-box">
+                    <ProjectComponent
+                        projectData={projectData}
+
+                    />
+                </Paper>
+            </div>
+            <div className="col-lg-3 ">
+                <Paper className="summary-box">
+                    <EmployeeDetailsComponent
+                        empDetails={employeeData}
+
+                    />
+                </Paper>
+            </div>
+            <div className="col-lg-3 ">
+                <Paper className="summary-box">
+                    <div style={{height: 100}}/>
+                </Paper>
+            </div>
+            <div className="col-lg-3 ">
+                <Paper className="summary-box">
+                    <div style={{height: 100}}/>
+                </Paper>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-lg-6 ">
+                <Paper className="summary-box">
+                    <ProjectAndTeamSizeComponent
+                        empDetails={employeeData}
+                        projectData={projectData}
+
+                    />
+                </Paper>
+            </div>
+            <div className="col-lg-6">
+                <Paper className="summary-box">
+                    <div style={{height: 280}}/>
+                </Paper>
+            </div>
+        </div>
     </div>
-    <div style={style.divSize}>
-      <Paper style={style.style} zDepth={4}>
-        <ProjectComponent
-          projectData={props.projectData}
-          stepperName={props.stepperName}
-        />
-        <EmployeeDetailsComponent
-          empDetails={props.empDetails}
-          stepperName={props.stepperName}
-        />
-      </Paper>
-    </div>
-  </div>);
-DashBoardComponent.propTypes = {
-    empDetails: propTypes.arrayOf(propTypes.string),
-    stepperName: propTypes.func,
-    projectData: propTypes.arrayOf(propTypes.string)
-};
+);
+
 
 export default DashBoardComponent;

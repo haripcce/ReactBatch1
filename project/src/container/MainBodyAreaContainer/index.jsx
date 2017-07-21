@@ -4,16 +4,22 @@ import DashBoardComponent from 'components/DashBoardComponent';
 import AllProjectInfoComponent from 'components/AllProjectInfoComponent';
 import EmployeeDetailedInfoComponent from 'components/EmployeeDetailedInfoComponent';
 
-const MainBodyAreaContainer = props => {
-    if (props.screenName === 'projects') {
+const MainBodyAreaContainer = props =>
+    /* if (props.screenName === 'projects') {
         return (
-          <AllProjectInfoComponent projectData={props.projectData} />
+          <AllProjectInfoComponent
+              projectData={props.projectData}
+              navHistory={props.navHistory}/>
         );
     } else if (props.screenName === 'employeeInfo') {
         return (
           <EmployeeDetailedInfoComponent
             empDetails={props.empDetails}
             projectData={props.projectData}
+            projectName={props.projectName}
+            projectIdForEmpList={props.projectIdForEmpList}
+            navHistory={props.navHistory}
+            childProps={props.children}
           />
         );
     }
@@ -23,15 +29,20 @@ const MainBodyAreaContainer = props => {
         <DashBoardComponent
           empDetails={props.empDetails}
           projectData={props.projectData}
-          stepperName={props.stepperName}
+          navHistory={props.navHistory}
+          projectName={props.projectName}
+          changeScreen={props.changeScreen}
+          childProps={props.children}
+
         />
-      </div>
+      </div>*/
+    (<div id="mainReplacibleBody">
+      {props.childProp}</div>
     );
-};
 
 MainBodyAreaContainer.propTypes = {
-    empDetails: propTypes.arrayOf(propTypes.string),
-    projectData: propTypes.arrayOf(propTypes.string),
+    empDetails: propTypes.arrayOf(propTypes.object),
+    projectData: propTypes.arrayOf(propTypes.object),
     stepperName: propTypes.func,
     screenName: propTypes.string
 };

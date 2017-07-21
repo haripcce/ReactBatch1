@@ -1,6 +1,14 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import TeamDetails from 'components/TeamDetails';
+import {
+    Table,
+    TableBody,
+    TableHeader,
+    TableHeaderColumn,
+    TableRow,
+    TableRowColumn
+} from 'material-ui/Table';
 
 const style = {
     table: {
@@ -8,6 +16,9 @@ const style = {
         height: '133px',
         overflowY: 'scroll',
         marginLeft: '15%'
+    },
+    tableHeaderStyle: {
+        textAlign: 'right'
     }
 };
 const ProjectAndTeamSizeContainer = props => {
@@ -18,31 +29,51 @@ const ProjectAndTeamSizeContainer = props => {
     projectData.forEach(p => {
         const pId = p.projectId;
         const pName = p.projectName;
-        const count = 0;
+        let count = 0;
         empDetails.forEach(e => {
             if (e.projectId === pId) {
-                teamCount = count + 1;
+                count++;
+                teamCount = count;
             }
         });
-        teamSizeArray.push(<TeamDetails projectName={pName} teamSize={teamCount} />);
+        teamSizeArray.push(<TeamDetails
+          projectName={pName}
+          teamSize={teamCount}
+          empId={pId}
+          navHistory={props.navHistory}
+          selectedProjectId={props.projectName}
+          changeScreen={props.changeScreen}
+        />);
     });
 
     return (
-      <table className="table" style={style.table}>
-        <thead>
-          <tr>
-            <th>
+      <div>
+        <div className="textStyle">Project Information</div>
+        <Table
+          className="table-text"
+          fixedHeader
+          fixedFooter
+          selectable
+          displaySelectAll={false}
+        >
+          <TableHeader
+            displaySelectAll={false}
+            adjustForCheckbox={false}
+            style={style.tableHeaderStyle}
+          >
+            <TableRow >
+              <TableHeaderColumn>
                         Project Name
-                    </th>
-            <th>
+                    </TableHeaderColumn>
+              <TableHeaderColumn>
                         Team size
-                    </th>
-          </tr>
-        </thead>
-        <tbody>
-          {teamSizeArray}
-        </tbody>
-      </table>
+                    </TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody displayRowCheckbox={false}>
+            {teamSizeArray}
+          </TableBody>
+        </Table></div>
     );
 };
 ProjectAndTeamSizeContainer.propTypes = {

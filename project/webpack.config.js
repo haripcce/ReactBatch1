@@ -6,7 +6,7 @@ const webpack = require('webpack');
 
 require('dotenv').load({path: require('path').join(__dirname, '.env')});
 
-const isProduction = process.env.ENV === 'production';
+const isProduction = false;
 const src = path.join(__dirname, 'src');
 const plugins = isProduction ?
 [

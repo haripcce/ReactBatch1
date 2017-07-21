@@ -6,14 +6,14 @@ const ProjectComponent = props => (
   <div>
     <ProjectContainer
       projectData={props.projectData}
-      stepperName={props.stepperName}
+      navHistory={props.navHistory}
     />
   </div>
 );
 
 ProjectComponent.propTypes = {
     projectData: propTypes.arrayOf(propTypes.string),
-    stepperName: propTypes.func
+    navHistory: propTypes.func
 };
 
 export default ProjectContainer;

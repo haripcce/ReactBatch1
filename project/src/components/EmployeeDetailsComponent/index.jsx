@@ -5,12 +5,14 @@ import EmployeeDetailsContainer from 'container/EmployeeDetailsContainer';
 const EmployeeDetailsComponent = props =>
     (<EmployeeDetailsContainer
       empDetails={props.empDetails}
-      stepperName={props.stepperName}
+      navHistory={props.navHistory}
+      childProps={props.children}
+
     />);
 
 EmployeeDetailsComponent.propTypes = {
     empDetails: propTypes.arrayOf(propTypes.string),
-    stepperName: propTypes.func
+    navHistory: propTypes.func
 };
 
 export default EmployeeDetailsComponent;

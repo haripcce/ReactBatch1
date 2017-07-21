@@ -1,44 +1,41 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
-import propTypes from 'prop-types';
-import ProjectPropertiesComponent from 'components/ProjectPropertiesComponent';
 
-const style = {
-    paper: {
-        margin: 'auto',
-        width: '300px',
-        height: '300px',
-        marginTop: '5%'
-    },
-    title: {
-        fontWeight: 'bold'
-    }
-};
-const AllProjectInfoComponent = props => {
-    const projectPropArray = [];
+import {
+    Table,
+    TableBody,
+    TableHeader,
+    TableHeaderColumn,
+    TableRow,
+    TableRowColumn
+} from 'material-ui/Table';
+import projectData from 'JsonFiles/projectData';
 
-    props.projectData.forEach(project => {
-        const projectName = project.projectName;
-        const teamSize = project.teamSize;
-        projectPropArray.push(<ProjectPropertiesComponent
-          projectName={projectName}
-          teamSize={teamSize}
-        />);
-    });
-    return (
-      <Paper style={style.paper} zDepth={4}>
-        <table className="table">
-          <thead>
-            <tr style={style.title}>Project Information</tr>
-          </thead>
-          <tbody>
-            {projectPropArray}
-          </tbody>
-        </table>
-      </Paper>
+const AllProjectInfoComponent = () => {
+    const projects = projectData;
+
+    const projectDetails = projects.map(
+        project => (<TableRow >
+                <TableRowColumn>{project.projectId}</TableRowColumn>
+                <TableRowColumn>{project.projectName}</TableRowColumn>
+                <TableRowColumn>{project.teamSize}</TableRowColumn>
+            </TableRow>
+        )
     );
+
+    return (
+        <Table >
+            <TableHeader>
+                <TableRow>
+                    <TableHeaderColumn>ProjectId</TableHeaderColumn>
+                    <TableHeaderColumn>ProjectName</TableHeaderColumn>
+                    <TableHeaderColumn>TeamSize</TableHeaderColumn>
+
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                {projectDetails}
+            </TableBody>
+        </Table>);
 };
-AllProjectInfoComponent.propTypes = {
-    projectData: propTypes.arrayOf(propTypes.string)
-};
+
 export default AllProjectInfoComponent;

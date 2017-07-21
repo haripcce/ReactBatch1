@@ -4,32 +4,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
-import FlatButton from 'material-ui/FlatButton';
+import { hashHistory } from 'react-router';
 
-const HeaderComponent = props => {
-    const onChangeScreen = props.changeScreenName;
-    return (
-      <div>
-        <AppBar
-          title="My Company"
-          iconElementRight={<div>
-            <FlatButton
-              label="Screen 1"
-              onClick={
-                () => onChangeScreen('Screen 1')
-                }
+class HeaderComponent extends React.Component {
+    constructor() {
+        super();
+        this.showLogin = this.showLogin.bind(this);
+    }
+    showLogin() {
+        hashHistory.push('/login');
+    }
+
+    render() {
+
+        const locationString = window.location.href;
+        const result = locationString.search('dashPage');
+        let anchorValue = '';
+        if (result !== -1) {
+            anchorValue = (<div
+              style={{ fontSize: '20',
+                  fontWeight: '400',
+                  lineHeight: '45px',
+                  marginRight: '10' }}
+            ><a style={{ color: 'white' }} onClick={this.showLogin}>Log Out</a>
+            </div>);
+        }
+
+        return (
+          <div>
+            <AppBar
+              title="My Company"
+              iconElementRight={anchorValue}
             />
-            <FlatButton
-              onClick={
-                () => onChangeScreen('Screen 2')
-                }
-              label="Screen 2" value="Screen2"
-            />
-          </div>}
-        />
-      </div>
-    );
-};
+          </div>
+        );
+    }
+}
 
 HeaderComponent.propTypes = {
     changeScreenName: PropTypes.func

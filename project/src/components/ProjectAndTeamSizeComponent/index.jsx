@@ -7,6 +7,9 @@ const ProjectAndTeamSizeComponent = props => (
     <ProjectAndTeamSizeContainer
       empDetails={props.empDetails}
       projectData={props.projectData}
+      navHistory={props.navHistory}
+      projectName={props.projectName}
+      changeScreen={props.changeScreen}
     />
   </div>
 );
