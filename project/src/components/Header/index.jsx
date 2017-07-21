@@ -5,28 +5,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import { hashHistory } from 'react-router';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as authActionCreator from 'actions/auth';
 
 class HeaderComponent extends React.Component {
     constructor() {
         super();
-        this.showLogin = this.showLogin.bind(this);
+        this.onLogout = this.onLogout.bind(this);
     }
-    showLogin() {
-        hashHistory.push('/login');
+
+    onLogout() {
+      this.props.authActions.onLogout();
     }
 
     render() {
 
-        const locationString = window.location.href;
-        const result = locationString.search('dashPage');
         let anchorValue = '';
-        if (result !== -1) {
+        if (this.props.loggedInUser) {
             anchorValue = (<div
               style={{ fontSize: '20',
                   fontWeight: '400',
                   lineHeight: '45px',
                   marginRight: '10' }}
-            ><a style={{ color: 'white' }} onClick={this.showLogin}>Log Out</a>
+            >
+              <span style={{marginRight:40}}>{this.props.loggedInUser.userName}</span>
+              <a style={{ color: 'white' }} onClick={this.onLogout}>
+              Log Out</a>
             </div>);
         }
 
@@ -44,5 +49,17 @@ class HeaderComponent extends React.Component {
 HeaderComponent.propTypes = {
     changeScreenName: PropTypes.func
 };
-export default HeaderComponent;
+
+const mapStateToProps = state => ({
+  loggedInUser:state.auth.loggedInUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  authActions: bindActionCreators(authActionCreator, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);
+
+
+
 

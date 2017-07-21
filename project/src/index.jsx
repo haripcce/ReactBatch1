@@ -11,19 +11,23 @@ import EmployeeDetailedInfoComponent from 'components/EmployeeDetailedInfoCompon
 import AllProjectInfoComponent from 'components/AllProjectInfoComponent';
 import DashBoardComponent from 'components/DashBoardComponent';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Provider } from 'react-redux';
+import store from 'store';
 
 ReactDOM.render(
-  <Router history={hashHistory}>
-    <Route path="/" component={AppContainer}>
-      <Route path="/login" component={LoginScreenContainer} />
-      <IndexRoute component={LoginScreenContainer} />
-      <Route path="/dashPage" component={DashBoardContainerComponent}>
-        <Route path="/dashPage/dashboard" component={DashBoardComponent} />
-        <Route path="/dashPage/employee" component={EmployeeDetailedInfoComponent} />
-        <Route path="/dashPage/projects" component={AllProjectInfoComponent} />
-        <Route path="/dashPage/:projectName/:id" component={EmployeeDetailedInfoComponent} />
-      </Route>
-    </Route>
-  </Router>
+    <Provider store={store}>
+      <Router history={hashHistory}>
+        <Route path="/" component={AppContainer}>
+          <Route path="/login" component={LoginScreenContainer}/>
+          <IndexRoute component={LoginScreenContainer}/>
+          <Route path="/dashPage" component={DashBoardContainerComponent}>
+            <Route path="/dashPage/dashboard" component={DashBoardComponent}/>
+            <Route path="/dashPage/employee" component={EmployeeDetailedInfoComponent}/>
+            <Route path="/dashPage/projects" component={AllProjectInfoComponent}/>
+            <Route path="/dashPage/:projectName/:id" component={EmployeeDetailedInfoComponent}/>
+          </Route>
+        </Route>
+      </Router>
+    </Provider>
     ,
     document.getElementById('root'));

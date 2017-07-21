@@ -2,7 +2,9 @@ import React from 'react';
 import propTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import { hashHistory } from 'react-router';
+import {bindActionCreators} from 'redux';
+import * as authActionCreator from 'actions/auth';
+import { connect } from 'react-redux';
 
 const style = {
     centerContent: {
@@ -44,9 +46,9 @@ class LoginScreenContainer extends React.Component {
     }
 
     onSubmitClick() {
-        if (this.state.userName === 'Pradnya' && this.state.password === 'Pradnya') {
-            hashHistory.push('/dashPage/dashboard');
-        }
+      this.props.authActions.onLogin(this.state.userName,
+          this.state.password
+      );
     }
 
     render() {
@@ -81,7 +83,7 @@ class LoginScreenContainer extends React.Component {
                 primary
                 onClick={this.handleSubmit}
               />
-              <p style={style.errorStyle}>{this.props.errorTextForForm}</p>
+              <p style={style.errorStyle}>{this.props.errorMessage}</p>
             </div>
           </div>
 
@@ -93,4 +95,13 @@ LoginScreenContainer.propTypes = {
     loginCredentials: propTypes.func,
     errorTextForForm: propTypes.func
 };
-export default LoginScreenContainer;
+
+const mapStateToProps = state => ({
+  errorMessage:state.auth.errorMessage
+});
+
+const mapDispatchToProps = dispatch => ({
+  authActions: bindActionCreators(authActionCreator, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreenContainer);

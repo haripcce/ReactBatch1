@@ -4,6 +4,9 @@ import MainBodyAreaContainer from 'container/MainBodyAreaContainer';
 import Employees from 'JsonFiles/employeeData';
 import Project from 'JsonFiles/projectData';
 import propTypes from 'prop-types';
+import * as employeeActionCreator from 'actions/employee';
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
 
 class DashBoardContainer extends React.Component {
     constructor() {
@@ -20,6 +23,10 @@ class DashBoardContainer extends React.Component {
 
         this.getProjectId = this.getProjectId.bind(this);
         this.onChangeScreen = this.onChangeScreen.bind(this);
+    }
+
+    componentDidMount(){
+      this.props.employeeActions.getEmployees();
     }
 
 
@@ -76,4 +83,9 @@ DashBoardContainer.propTypes={
     children: propTypes.node
 }
 
-export default DashBoardContainer;
+
+const mapDispatchToProps = dispatch => ({
+  employeeActions: bindActionCreators(employeeActionCreator, dispatch)
+});
+
+export default connect(null, mapDispatchToProps)(DashBoardContainer);
