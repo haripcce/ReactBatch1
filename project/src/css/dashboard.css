@@ -1,0 +1,33 @@
+body {
+    background-color: red;
+}
+
+.summary-box {
+    padding: 5px 9px;
+}
+
+.textStyle {
+    font-size: 22px;
+    color:lightcoral;
+}
+.summary-block {
+    margin-bottom: 20px;
+}
+.table-text{
+    font-size: 15px;
+}
+.countLabel{
+    padding-left: 20px;
+    font-size: 50px;
+    color:lightcoral;
+}
+.summary-box-label{
+    padding-left: 20px;
+    font-size: 22px;
+    color:darkgrey;
+}
+.breadCrumb-style{
+    font-size: 22px;
+    color: lightcoral;
+    padding-top: 20px;
+}
