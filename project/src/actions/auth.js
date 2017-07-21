@@ -4,36 +4,30 @@
 import Constant from 'constant';
 import { hashHistory } from 'react-router';
 
-export const onLogin = (userId, password) => {
-  return (dispatch) => {
-    if(userId === 'Yogesh' && password === 'Yogesh'){
-      dispatch({
-        type:Constant.ON_LOGIN_SUCCESS,
-        payload:{
-          userId:userId,
-          userName:'Yogesh Patel'
-        }
-      });
-      hashHistory.push('/dashPage/dashboard');
-      return;
+export const onLogin = (userId, password) => dispatch => {
+    if (userId === 'Yogesh' && password === 'Yogesh') {
+        dispatch({
+            type: Constant.ON_LOGIN_SUCCESS,
+            payload: {
+                userId,
+                userName: 'Yogesh Patel'
+            }
+        });
+        hashHistory.push('/dashPage/dashboard');
+        return;
     }
     dispatch({
-      type:Constant.ON_LOGIN_FAILURE,
-      payload:{
-        errorMessage:"Invalid Credential"
-      }
+        type: Constant.ON_LOGIN_FAILURE,
+        payload: {
+            errorMessage: 'Invalid Credential'
+        }
     });
+};
 
-  }
-
-}
-
-export const onLogout = () => {
-  return dispatch => {
+export const onLogout = () => dispatch => {
     dispatch({
-      type:Constant.LOGGED_OUT
+        type: Constant.LOGGED_OUT
     });
     hashHistory.push('/login');
-  }
-}
+};
 

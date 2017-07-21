@@ -5,7 +5,7 @@ import Employees from 'JsonFiles/employeeData';
 import Project from 'JsonFiles/projectData';
 import propTypes from 'prop-types';
 import * as employeeActionCreator from 'actions/employee';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 class DashBoardContainer extends React.Component {
@@ -14,7 +14,6 @@ class DashBoardContainer extends React.Component {
         this.state = {
             empDetails: Employees,
             projectData: Project
-
 
         };
         this.onClickOfProject = this.onClickOfProjectPaper.bind(this);
@@ -25,11 +24,9 @@ class DashBoardContainer extends React.Component {
         this.onChangeScreen = this.onChangeScreen.bind(this);
     }
 
-    componentDidMount(){
-      this.props.employeeActions.getEmployees();
+    componentDidMount() {
+        this.props.employeeActions.getEmployees();
     }
-
-
 
     onClickOfProjectPaper(selection) {
         const selectionIndex = this.state.navHistory.indexOf(selection);
@@ -68,9 +65,7 @@ class DashBoardContainer extends React.Component {
     render() {
         return (
           <div className="container">
-            <BreadCrumbAreaContainer
-
-            />
+            <BreadCrumbAreaContainer />
             <MainBodyAreaContainer
 
               childProp={this.props.children}
@@ -79,13 +74,12 @@ class DashBoardContainer extends React.Component {
         );
     }
 }
-DashBoardContainer.propTypes={
+DashBoardContainer.propTypes = {
     children: propTypes.node
-}
-
+};
 
 const mapDispatchToProps = dispatch => ({
-  employeeActions: bindActionCreators(employeeActionCreator, dispatch)
+    employeeActions: bindActionCreators(employeeActionCreator, dispatch)
 });
 
 export default connect(null, mapDispatchToProps)(DashBoardContainer);

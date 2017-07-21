@@ -15,19 +15,19 @@ import { Provider } from 'react-redux';
 import store from 'store';
 
 ReactDOM.render(
-    <Provider store={store}>
-      <Router history={hashHistory}>
-        <Route path="/" component={AppContainer}>
-          <Route path="/login" component={LoginScreenContainer}/>
-          <IndexRoute component={LoginScreenContainer}/>
-          <Route path="/dashPage" component={DashBoardContainerComponent}>
-            <Route path="/dashPage/dashboard" component={DashBoardComponent}/>
-            <Route path="/dashPage/employee" component={EmployeeDetailedInfoComponent}/>
-            <Route path="/dashPage/projects" component={AllProjectInfoComponent}/>
-            <Route path="/dashPage/:projectName/:id" component={EmployeeDetailedInfoComponent}/>
-          </Route>
+  <Provider store={store}>
+    <Router history={hashHistory}>
+      <Route path="/" component={AppContainer}>
+        <Route path="/login" component={LoginScreenContainer} />
+        <IndexRoute component={LoginScreenContainer} />
+        <Route path="/dashPage" component={DashBoardContainerComponent}>
+          <Route path="/dashPage/dashboard" component={DashBoardComponent} />
+          <Route path="/dashPage/employee" component={EmployeeDetailedInfoComponent} />
+          <Route path="/dashPage/projects" component={AllProjectInfoComponent} />
+          <Route path="/dashPage/:projectName/:id" component={EmployeeDetailedInfoComponent} />
         </Route>
-      </Router>
-    </Provider>
+      </Route>
+    </Router>
+  </Provider>
     ,
     document.getElementById('root'));

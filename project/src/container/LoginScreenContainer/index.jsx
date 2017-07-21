@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import * as authActionCreator from 'actions/auth';
 import { connect } from 'react-redux';
 
@@ -46,7 +46,7 @@ class LoginScreenContainer extends React.Component {
     }
 
     onSubmitClick() {
-      this.props.authActions.onLogin(this.state.userName,
+        this.props.authActions.onLogin(this.state.userName,
           this.state.password
       );
     }
@@ -97,11 +97,11 @@ LoginScreenContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  errorMessage:state.auth.errorMessage
+    errorMessage: state.auth.errorMessage
 });
 
 const mapDispatchToProps = dispatch => ({
-  authActions: bindActionCreators(authActionCreator, dispatch)
+    authActions: bindActionCreators(authActionCreator, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreenContainer);

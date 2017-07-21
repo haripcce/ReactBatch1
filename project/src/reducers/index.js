@@ -6,9 +6,8 @@ import employees from 'reducers/employee';
 import projects from 'reducers/project';
 import auth from 'reducers/auth';
 
-
 export default combineReducers({
-  auth,
-  employees,
-  projects
+    auth,
+    employees,
+    projects
 });

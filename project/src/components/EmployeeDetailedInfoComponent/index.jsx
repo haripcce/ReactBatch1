@@ -12,7 +12,6 @@ import {
 } from 'material-ui/Table';
 
 const EmployeeDetailedInfoComponent = props => {
-
     const employeeDetails = [];
     const projectHash = {};
 
@@ -24,7 +23,7 @@ const EmployeeDetailedInfoComponent = props => {
 
     employeeData.filter(e => {
         if (props.params.id) {
-            return (String.valueOf(e.projectId)=== props.params.id);
+            return (String.valueOf(e.projectId) === props.params.id);
         }
         return true;
     }).forEach(employee => {
@@ -72,7 +71,5 @@ const EmployeeDetailedInfoComponent = props => {
       </TableBody>
     </Table>);
 };
-
-
 
 export default EmployeeDetailedInfoComponent;

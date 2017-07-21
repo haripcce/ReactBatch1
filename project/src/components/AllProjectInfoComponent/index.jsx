@@ -15,27 +15,27 @@ const AllProjectInfoComponent = () => {
 
     const projectDetails = projects.map(
         project => (<TableRow >
-                <TableRowColumn>{project.projectId}</TableRowColumn>
-                <TableRowColumn>{project.projectName}</TableRowColumn>
-                <TableRowColumn>{project.teamSize}</TableRowColumn>
-            </TableRow>
+          <TableRowColumn>{project.projectId}</TableRowColumn>
+          <TableRowColumn>{project.projectName}</TableRowColumn>
+          <TableRowColumn>{project.teamSize}</TableRowColumn>
+        </TableRow>
         )
     );
 
     return (
-        <Table >
-            <TableHeader>
-                <TableRow>
-                    <TableHeaderColumn>ProjectId</TableHeaderColumn>
-                    <TableHeaderColumn>ProjectName</TableHeaderColumn>
-                    <TableHeaderColumn>TeamSize</TableHeaderColumn>
+      <Table >
+        <TableHeader>
+          <TableRow>
+            <TableHeaderColumn>ProjectId</TableHeaderColumn>
+            <TableHeaderColumn>ProjectName</TableHeaderColumn>
+            <TableHeaderColumn>TeamSize</TableHeaderColumn>
 
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {projectDetails}
-            </TableBody>
-        </Table>);
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {projectDetails}
+        </TableBody>
+      </Table>);
 };
 
 export default AllProjectInfoComponent;
